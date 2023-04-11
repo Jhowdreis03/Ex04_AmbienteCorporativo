@@ -1,0 +1,29 @@
+import javax.swing.JOptionPane;
+
+public class Principal {
+    public static void main(String[] args) {
+        FilaStrings filaImpressao = new FilaStrings(10);
+        
+        while (true) {
+            String opcao = JOptionPane.showInputDialog("Digite a opção:\n1 - Inserir documento\n2 - Imprimir documento\n0 - Sair");
+            
+            if (opcao == null) {
+                break;
+            }
+            
+            switch (opcao) {
+                case "1":
+                    String documento = JOptionPane.showInputDialog("Digite o documento no formato ID_PC;Nome_Arquivo:");
+                    String[] dados = documento.split(";");
+                    String idPc = dados[0];
+                    String nomeArquivo = dados[1];
+                    // Validando o formato do documento
+                    if (idPc.length() > 0 && nomeArquivo.length() > 0) {
+                        ImpressoraController.insereDocumento(filaImpressao, documento);
+                        JOptionPane.showMessageDialog(null, "Documento inserido na fila de impressão com sucesso!");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Formato do documento inválido!");
+                    }
+                    break;
+                    
+                case
